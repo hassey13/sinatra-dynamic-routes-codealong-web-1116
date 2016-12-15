@@ -2,15 +2,26 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
 
-  # This is a sample static route.
-  get '/hello' do
-    "Hello World!"
+  get '/' do
+    "Hi!"
   end
 
-  # This is a sample dynamic route.
-  get "/hello/:name" do
+  get '/goodbye' do
+    "You are leaving?"
+  end
+
+  get "/goodbye/:name" do
     @user_name = params[:name]
-    "Hello #{@user_name}!"
+    "Goodbye #{@user_name}!"
+  end
+
+  get '/multiply' do
+    "Math!"
+  end
+
+  get "/multiply/:one/:two" do
+    @product = params[:one].to_i * params[:two].to_i
+    "The answer is #{@product}"
   end
 
 
